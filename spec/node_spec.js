@@ -1,4 +1,5 @@
-var Node = require("../app/javascripts/Node.js");
+var Node = require("../app/javascripts/node.js");
+var List = require("../app/javascripts/list.js");
 
 
 describe("Node", function(){

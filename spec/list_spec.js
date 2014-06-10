@@ -1,4 +1,5 @@
 var List = require("../app/javascripts/list.js");
+var Node = require("../app/javascripts/node.js");
 
 
 
@@ -146,6 +147,7 @@ describe("List", function(){
       list.push(2);
       list.push(3);
       var secondToLast = list.tail.previous();
+      list.pop();
       expect(secondToLast).toBe(list.tail)
     });
 
@@ -155,17 +157,17 @@ describe("List", function(){
     });
   });
 
-
+// why point the head to the value and not the node?
   describe("#head", function(){
     it("should return null if empty", function(){
       var list = new List();
-      expect(list.head()).toEqual(null);
+      expect(list.head).toEqual(null);
     });
 
     it("should return first node.value when nonempty", function(){
       var list = new List();
       list.push(1);
-      expect(list.head()).toEqual(1);
+      expect(list.head.value).toEqual(1);
     });
   });
 
@@ -212,7 +214,7 @@ describe("List", function(){
     it("should initialize head and tail for empty list", function(){
       list.insert(0,1);
       expect(list.head).toBe(list.tail);
-      expect(list.value).toBe(1);
+      expect(list.head.value).toBe(1);
     });
 
     it("should insert at beginning of list and update head and previous of old head", function(){
